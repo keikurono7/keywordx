@@ -2,7 +2,7 @@ import unittest
 from keywordx import KeywordExtractor
 import pprint
 
-def test_entity_boosts_applied(text,keywords,weights):
+def entity_boosts_applied(text, keywords, weights):
     extractor = KeywordExtractor(
         entity_weights=weights
     )
@@ -14,7 +14,7 @@ def test_entity_boosts_applied(text,keywords,weights):
     return result
 
 if __name__ == "__main__":
-    pprint(test_entity_boosts_applied("I want to visit Paris next Friday with a budget of $1500.",["date", "place", "money"],{
+    pprint(entity_boosts_applied("I want to visit Paris next Friday with a budget of $1500.",["date", "place", "money"],{
             'GPE': 1.5,
             'DATE': 1.3,
             'MONEY': 0.8   
