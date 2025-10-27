@@ -64,11 +64,11 @@ def test_score_multiplication():
     
     # Use a text where "meeting" has both semantic and entity matches
     text = "The annual meeting is scheduled for next Friday in Paris."
-    keywords = ["event", "date", "place"]
+    keywords = ["event", "date", "location"]
     
     result = ke.extract(text, keywords)
     matches = {m["keyword"]: m for m in result["semantic_matches"]}
     
     # Check that scores are properly boosted
     assert matches["date"]["score"] == 0.6 * 1.5  # Entity-only with boost
-    assert matches["place"]["score"] == 0.6 * 1.2  # Entity-only with boost
+    assert matches["location"]["score"] == 0.6 * 1.2  # Entity-only with boost

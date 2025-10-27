@@ -121,3 +121,23 @@ class KeywordExtractor:
 
         results = list(final_results.values())
         return {"semantic_matches": results, "entities": ents}
+
+    def extract_many(self, texts, keywords, idf_vectorizer=None, idf_map=None, min_score=0.3):
+        """
+        Batch extraction for multiple texts.
+        
+        Args:
+            texts (list): List of text documents to process.
+            keywords (list): Keywords to extract from each document.
+            idf_vectorizer: Optional IDF vectorizer for scoring.
+            idf_map: Optional IDF mapping for scoring.
+            min_score (float): Minimum score threshold for matches.
+        
+        Returns:
+            list: List of results, one for each input text.
+        """
+        results = []
+        for text in texts:
+            result = self.extract(text, keywords, idf_vectorizer, idf_map, min_score)
+            results.append(result)
+        return results
